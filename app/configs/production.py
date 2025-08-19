@@ -1,0 +1,8 @@
+from .base import *
+import os
+
+DEBUG = False
+DATABASE_URL = os.getenv('DATABASE_URL', 'sqlite:///dev.db')
+SECRET_KEY = 'secret-key'
+
+GEMINI_KEY = os.getenv('GEMINI_KEY', '')
