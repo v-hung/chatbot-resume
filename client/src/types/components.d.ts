@@ -11,6 +11,7 @@ declare global {
   const IIonArrowUpCircleOutline: typeof import('~icons/ion/arrow-up-circle-outline.jsx')['default']
   const IIonCameraOutline: typeof import('~icons/ion/camera-outline.jsx')['default']
   const IIonClose: typeof import('~icons/ion/close.jsx')['default']
+  const IIonCloudDownloadOutline: typeof import('~icons/ion/cloud-download-outline.jsx')['default']
   const IIonCloudUploadOutline: typeof import('~icons/ion/cloud-upload-outline.jsx')['default']
   const IIonHelp: typeof import('~icons/ion/help.jsx')['default']
   const IIonLogoGoogle: typeof import('~icons/ion/logo-google.jsx')['default']

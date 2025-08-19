@@ -33,7 +33,7 @@ export function Component() {
 	return (
 		<div className="flex h-dvh">
 			<div
-				className="h-full w-1/3 overflow-auto border-r border-gray-200 bg-[#f9f9f9] p-6"
+				className="relative h-full w-1/3 overflow-auto border-r border-gray-200 bg-[#f9f9f9] p-6"
 				ref={containerRef}
 			>
 				<img
@@ -46,6 +46,14 @@ export function Component() {
 						transition: "transform 0.1s linear ",
 					}}
 				/>
+
+				<a
+					href="./Nguyen VIet Hung - Fullstack Developer (English)_CV_topdev.vn.pdf"
+					download={true}
+					className="absolute top-4 right-4 size-10 rounded bg-gray-200 p-2 hover:bg-gray-300"
+				>
+					<IIonCloudDownloadOutline />
+				</a>
 			</div>
 
 			<div className="flex flex-1 flex-col">
