@@ -7,9 +7,12 @@
 export {}
 declare global {
   const IBxLoaderAlt: typeof import('~icons/bx/loader-alt.jsx')['default']
+  const IIonArrowUp: typeof import('~icons/ion/arrow-up.jsx')['default']
+  const IIonArrowUpCircleOutline: typeof import('~icons/ion/arrow-up-circle-outline.jsx')['default']
   const IIonCameraOutline: typeof import('~icons/ion/camera-outline.jsx')['default']
   const IIonClose: typeof import('~icons/ion/close.jsx')['default']
   const IIonCloudUploadOutline: typeof import('~icons/ion/cloud-upload-outline.jsx')['default']
+  const IIonHelp: typeof import('~icons/ion/help.jsx')['default']
   const IIonLogoGoogle: typeof import('~icons/ion/logo-google.jsx')['default']
   const IIonMenu: typeof import('~icons/ion/menu.jsx')['default']
   const IIonScan: typeof import('~icons/ion/scan.jsx')['default']
