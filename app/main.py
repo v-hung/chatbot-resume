@@ -1,8 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.staticfiles import StaticFiles
-from routers import chat_router, setup_router
-from configs import STATIC_DIR, UPLOAD_DIR
+from routers import chat_router
+from configs import STATIC_DIR
 from fastapi.responses import FileResponse
 
 app = FastAPI()
@@ -21,7 +20,6 @@ app.add_middleware(
 )
 
 app.include_router(chat_router.router, prefix="/api")
-# app.mount("/uploads", StaticFiles(directory=UPLOAD_DIR), name="uploads")
 
 @app.get("/{full_path:path}")
 async def read_index(full_path: str):

@@ -1,9 +1,9 @@
 # from typing import Literal
 from typing_extensions import Annotated, TypedDict
 
-class Search(TypedDict):
+class QASearch(TypedDict):
 	"""Search query."""
-	query: Annotated[str, ..., "English search query (translated & normalized)."]
+	query: Annotated[str, ..., "English search query to run."]
 	# section: Annotated[
 	# 	Literal["beginning", "middle", "end"],
 	# 	...,

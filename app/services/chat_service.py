@@ -29,26 +29,32 @@ prompt = PromptTemplate.from_template(template)
 vector_store = load_db()
 
 def analyze_query(state: dict):
+	return {"query": { "query": state['question'] }}
 	structured_llm = llm.with_structured_output(QASearch)
-	query = structured_llm.invoke({
-		"question": state["question"],
-		"instruction": """
-		- If the input is not in English, translate it into English.
-		- Normalize the question to make it short and concise (keyword-style).
-		- Ensure the output 'query' is in English for vector search.
-		"""
-	})
+	prompt = f"""
+	Question: {state['question']}
+
+	Instruction:
+	- Translate the question to English if it is not already.
+	- Output the full sentence in English suitable for vector search.
+	"""
+
+	query = structured_llm.invoke(prompt)
+
+	print(query)
 	return {"query": query}
 
 def retrieve(state: QAState):
-  retrieved_docs = vector_store.similarity_search(state["query"])
-  return {"context": retrieved_docs}
+	query = state["query"]
+	retrieved_docs = vector_store.similarity_search(query["query"])
+
+	return {"context": retrieved_docs}
 
 def generate(state: QAState):
-  docs_content = "\n\n".join(doc.page_content for doc in state["context"])
-  messages = prompt.invoke({"question": state["question"], "context":docs_content})
-  response = llm.invoke(messages)
-  return {"answer": response.content}
+	docs_content = "\n\n".join(doc.page_content for doc in state["context"])
+	messages = prompt.invoke({"question": state["question"], "context":docs_content})
+	response = llm.invoke(messages)
+	return {"answer": response.content}
 
 graph_builder = StateGraph(QAState).add_sequence([analyze_query, retrieve, generate])
 graph_builder.add_edge(START, "analyze_query")
